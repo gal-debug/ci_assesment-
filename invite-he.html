@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הזמנה לאבחון | Critical Impact</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Heebo',sans-serif;background:#141414;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:100vh;padding:32px 20px 48px;gap:20px}
+  .controls{display:flex;flex-direction:column;align-items:center;gap:10px}
+  .btn-dl{background:#CC2200;color:#fff;border:none;border-radius:8px;padding:13px 36px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Heebo',sans-serif;transition:background 0.15s}
+  .btn-dl:hover{background:#aa1a00}
+  .hint{font-size:11px;color:#555;text-align:center;line-height:1.7}
+  .hint span{color:#CC2200}
+  .invite{width:210mm;min-height:297mm;background:#0A0A0A;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:52px 52px 44px 52px;print-color-adjust:exact;-webkit-print-color-adjust:exact;box-shadow:0 8px 48px rgba(0,0,0,0.6)}
+  .invite::before{content:'';position:absolute;top:0;right:0;width:4px;height:100%;background:#CC2200}
+  .bg-glow{position:absolute;bottom:-120px;left:-120px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(204,34,0,0.06) 0%,transparent 65%);pointer-events:none}
+  .logo{font-size:10px;letter-spacing:0.2em;color:#2e2e2e;text-transform:uppercase;margin-bottom:64px;direction:ltr;text-align:left}
+  .logo em{color:#CC2200;font-style:normal}
+  .eyebrow{font-size:11px;letter-spacing:0.14em;color:#CC2200;text-transform:uppercase;margin-bottom:18px}
+  .headline{font-size:46px;font-weight:800;line-height:1.18;color:#fff;margin-bottom:28px}
+  .headline em{color:#CC2200;font-style:normal}
+  .rule{width:36px;height:2px;background:#CC2200;margin-bottom:28px}
+  .body{font-size:15.5px;color:#777;line-height:1.95;margin-bottom:52px;max-width:420px}
+  .body strong{color:#aaa;font-weight:600}
+  .cta-box{background:#0f0f0f;border:1px solid #1c1c1c;border-radius:14px;padding:28px 32px;display:flex;align-items:center;gap:28px;margin-bottom:18px}
+  .qr-wrap{flex-shrink:0;background:#fff;padding:8px;border-radius:8px}
+  .qr-wrap canvas,.qr-wrap img{display:block;width:108px!important;height:108px!important}
+  .cta-right{display:flex;flex-direction:column;gap:6px}
+  .cta-label{font-size:13px;font-weight:700;color:#fff;margin-bottom:10px}
+  .meta-item{display:flex;align-items:center;gap:10px;font-size:13.5px;color:#555}
+  .meta-dot{width:5px;height:5px;border-radius:50%;background:#CC2200;flex-shrink:0}
+  .url{font-size:10.5px;color:#2a2a2a;direction:ltr;text-align:left;font-family:'Courier New',monospace;letter-spacing:0.02em}
+  .spacer{flex:1}
+  .footer{border-top:1px solid #161616;padding-top:20px;display:flex;justify-content:space-between;align-items:center}
+  .footer-contact{font-size:10.5px;color:#2e2e2e;direction:ltr;text-align:left;letter-spacing:0.02em}
+  .footer-brand{font-size:10px;color:#222;letter-spacing:0.08em}
+  @media print{
+    body{background:#0A0A0A;padding:0;margin:0;min-height:unset}
+    .controls,.hint{display:none!important}
+    .invite{width:210mm;min-height:297mm;box-shadow:none;margin:0}
+    *{print-color-adjust:exact!important;-webkit-print-color-adjust:exact!important}
+  }
+</style>
+</head>
+<body>
+<div class="controls">
+  <button class="btn-dl" onclick="window.print()">⬇ הורד PDF הזמנה</button>
+  <div class="hint">בחלון ההדפסה: בחר <span>Save as PDF</span> ← הפעל "Background graphics" ← אפס שוליים ל-None</div>
+</div>
+<div class="invite">
+  <div class="bg-glow"></div>
+  <div class="logo">Critical <em>Impact</em></div>
+  <div class="eyebrow">אבחון מוכנות ניהולית — סייבר</div>
+  <div class="headline">האם ההנהלה שלך<br>מוכנה ל<em>אירוע סייבר</em>?</div>
+  <div class="rule"></div>
+  <div class="body">
+    רוב הארגונים מגלים את הפערים הניהוליים רק כשה-CISO מתקשר ב-11 בלילה.<br><br>
+    <strong>אבחון זה חושף תוך 3 דקות</strong> כמה ההנהלה שלך באמת מוכנה —
+    לא מבחינה טכנית, אלא ניהולית ותפעולית. בסוף מקבלים ציון ודוח PDF אישי.
+  </div>
+  <div class="cta-box">
+    <div class="qr-wrap"><div id="qrcode"></div></div>
+    <div class="cta-right">
+      <div class="cta-label">סרוק להתחלה מיידית ↙</div>
+      <div class="meta-item"><div class="meta-dot"></div>3 דקות בלבד</div>
+      <div class="meta-item"><div class="meta-dot"></div>8 שאלות ניהוליות</div>
+      <div class="meta-item"><div class="meta-dot"></div>ציון מיידי + דוח PDF אישי</div>
+      <div class="meta-item"><div class="meta-dot"></div>ללא הרשמה</div>
+    </div>
+  </div>
+  <div class="url">gal-debug.github.io/ci_assesment-/assessment-he.html</div>
+  <div class="spacer"></div>
+  <div class="footer">
+    <div class="footer-contact">gal@crt-imp.com · www.crt-imp.com · +972-72-337-7777</div>
+    <div class="footer-brand">CRITICAL IMPACT</div>
+  </div>
+</div>
+<script>
+new QRCode(document.getElementById('qrcode'), {
+  text: 'https://gal-debug.github.io/ci_assesment-/assessment-he.html',
+  width: 108, height: 108,
+  colorDark: '#000000', colorLight: '#ffffff',
+  correctLevel: QRCode.CorrectLevel.M
+});
+</script>
+</body>
+</html>
